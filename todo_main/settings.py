@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +26,7 @@ SECRET_KEY = "django-insecure-pk$#w0w_!2#4xcox=^$vgl@^ilix6ygpoe&y$qg4$rc5tu+$n_
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -74,12 +77,16 @@ WSGI_APPLICATION = "todo_main.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# postgres://todo_django_render_vzqp_user:K5cCP35eRsdrmpPt1EbBgY6RvVmZ0Zsm@dpg-cng76eect0pc738fp9k0-a.oregon-postgres.render.com/todo_django_render_vzqp
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+DATABASES['default']=dj_database_url.parse('postgres://todo_django_render_vzqp_user:K5cCP35eRsdrmpPt1EbBgY6RvVmZ0Zsm@dpg-cng76eect0pc738fp9k0-a.oregon-postgres.render.com/todo_django_render_vzqp')
 
 
 # Password validation
